@@ -13,14 +13,18 @@ public class World : MonoBehaviour
         for (int i = 0; i < chunks.Length; i++)
         {
             if (chunks[i] != null)
+            {
+                if (i > 0)
+                    chunks[i - 1].ExtendFromRightNeighbor(chunks[i].WallTileMap);
                 continue;
+            }
 
             Vector2 pos = i == 0 ? Vector2.zero : (Vector2) chunks[i - 1].endPoint.position - (Vector2) chunks[i - 1].startPoint.localPosition;
             Chunk chunk = Instantiate(chunkPrefabs[Random.Range(0, chunkPrefabs.Length - 1)], pos, Quaternion.identity, transform);
             chunk.gameObject.name = $"Chunk ({i + 1})";
             chunks[i] = chunk;
             
-            chunks[i - 1].ExtendFromRightNeighbor(chunk.TileMap);
+            chunks[i - 1].ExtendFromRightNeighbor(chunk.WallTileMap);
         }
     }
 
@@ -48,6 +52,6 @@ public class World : MonoBehaviour
         chunk.gameObject.name = $"Chunk ({index + 1})";
         chunks[index] = chunk;
         
-        chunks[prev].ExtendFromRightNeighbor(chunk.TileMap);
+        chunks[prev].ExtendFromRightNeighbor(chunk.WallTileMap);
     }
 }
