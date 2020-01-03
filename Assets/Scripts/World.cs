@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class World : MonoBehaviour
 {
     [SerializeField] private float chunkSpeed = 1f;
-    [SerializeField] private float minX = -10f;
 
     [SerializeField] private Chunk[] chunks = new Chunk[4];
     [SerializeField] private Chunk[] chunkPrefabs = new Chunk[0];
 
+    private Camera cam;
+    private float lastAspect;
+    private float minX = -10f;
+    
     private void Awake()
     {
+        cam = Camera.main;
+        ResetMinX();
+        
         for (int i = 0; i < chunks.Length; i++)
         {
             if (chunks[i] != null)
@@ -38,6 +46,22 @@ public class World : MonoBehaviour
             if (chunks[i].endPoint.position.x < minX)
                 SetChunk(i);
         }
+
+        float nextAspect = cam.aspect;
+        if (Math.Abs(nextAspect - lastAspect) > 0.1f)
+        {
+            lastAspect = nextAspect;
+            ResetMinX();
+        }
+    }
+
+    private void ResetMinX()
+    {
+        if (cam == null)
+            Debug.LogError("No Camera Found");
+
+        float halfHeight = cam.orthographicSize;
+        minX = -cam.aspect * halfHeight - 1f;
     }
 
     private void SetChunk(int index)

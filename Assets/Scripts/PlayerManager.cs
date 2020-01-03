@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
 
         if (!gameOver)
         {
-            score.value += Time.deltaTime;
+            score.value += Time.deltaTime * 10f;
             if (score.value > highScore.value) highScore.value = score.value;
         }
     }
