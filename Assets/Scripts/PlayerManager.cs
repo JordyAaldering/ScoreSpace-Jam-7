@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private UnityEvent OnGameOverEvent = new UnityEvent();
+    private bool gameOver;
 
     private float startX;
     private Transform playerTransform;
@@ -17,6 +19,15 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         if (playerTransform.position.x < startX - 0.1f)
+        {
+            gameOver = true;
             OnGameOverEvent.Invoke();
+        }
+
+        if (gameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            if (Physics2D.gravity.y > 0f) Physics2D.gravity = -Physics2D.gravity;
+            SceneManager.LoadScene(0);
+        }
     }
 }
