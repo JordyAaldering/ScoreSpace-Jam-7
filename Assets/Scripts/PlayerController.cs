@@ -57,10 +57,17 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = velocityY < 0f ? fallMultiplier :
                 velocityY > 0f && !Input.GetButton("Jump") ? lowJumpMultiplier : 1f;
             
-            if (!wasGrounded && IsGrounded)
+            if (IsGrounded)
             {
-                OnLandEvent.Invoke();
-                wasGrounded = true;
+                if (!wasGrounded)
+                {
+                    OnLandEvent.Invoke();
+                    wasGrounded = true;
+                }
+            }
+            else
+            {
+                wasGrounded = false;
             }
         }
     }
