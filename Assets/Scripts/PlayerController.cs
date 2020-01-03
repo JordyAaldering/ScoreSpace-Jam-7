@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundedSkin = 0.05f;
     [SerializeField] private LayerMask whatIsGround;
 
-    [SerializeField] private UnityEvent OnJumpEvent;
-    [SerializeField] private UnityEvent OnLandEvent;
+    [SerializeField] private UnityEvent OnJumpEvent = new UnityEvent();
+    [SerializeField] private UnityEvent OnLandEvent = new UnityEvent();
     
     private bool jumpRequest;
     private Vector2 playerSize, boxSize;
