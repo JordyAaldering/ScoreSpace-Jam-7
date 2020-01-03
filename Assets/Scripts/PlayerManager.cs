@@ -19,15 +19,18 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         if (playerTransform.position.x < startX - 0.1f)
-        {
-            gameOver = true;
-            OnGameOverEvent.Invoke();
-        }
+            GameOver();
 
         if (gameOver && Input.GetKeyDown(KeyCode.R))
         {
             if (Physics2D.gravity.y > 0f) Physics2D.gravity = -Physics2D.gravity;
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void GameOver()
+    {
+        gameOver = true;
+        OnGameOverEvent.Invoke();
     }
 }

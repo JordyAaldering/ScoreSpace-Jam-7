@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Physics2D.gravity = -Physics2D.gravity;
-            transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.z + 180f);
+            transform.rotation = Quaternion.Euler(0f, 0f, Physics2D.gravity.y < 0f ? 0f : 180f);
         }
     }
 
