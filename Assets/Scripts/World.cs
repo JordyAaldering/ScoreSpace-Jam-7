@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 public class World : MonoBehaviour
 {
     [SerializeField] private float chunkSpeed = 1f;
+    [SerializeField] private float chunkSpeedIncrement = 0.1f;
 
     [SerializeField] private Chunk[] chunks = new Chunk[4];
     [SerializeField] private Chunk[] chunkPrefabs = new Chunk[0];
@@ -17,6 +18,8 @@ public class World : MonoBehaviour
     {
         cam = Camera.main;
         ResetMinX();
+
+        FindObjectOfType<PlayerManager>().OnGameOverAction += () => chunkSpeedIncrement = 0f;
         
         for (int i = 0; i < chunks.Length; i++)
         {
@@ -38,6 +41,8 @@ public class World : MonoBehaviour
 
     private void Update()
     {
+        chunkSpeed += Time.deltaTime * chunkSpeedIncrement;
+        
         for (int i = 0; i < chunks.Length; i++)
         {
             Chunk chunk = chunks[i];

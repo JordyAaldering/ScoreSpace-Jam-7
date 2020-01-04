@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0649
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private FloatVariable score, highScore;
     
     [SerializeField] private UnityEvent OnGameOverEvent = new UnityEvent();
+    public Action OnGameOverAction { get; set; } = delegate { };
+    
     private bool gameOver;
 
     private float startX;
@@ -23,7 +26,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if (playerTransform.position.x < startX - 0.1f)
+        Vector2 playerPos = playerTransform.position;
+        if (playerPos.x < startX - 0.1f || playerPos.y < -6f)
             GameOver();
 
         if (gameOver && Input.GetKeyDown(KeyCode.R))
