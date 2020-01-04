@@ -33,7 +33,7 @@ public class PlayerManager : MonoBehaviour
         if (gameOver && Input.GetKeyDown(KeyCode.R))
         {
             if (Physics2D.gravity.y > 0f) Physics2D.gravity = -Physics2D.gravity;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if (!gameOver)
