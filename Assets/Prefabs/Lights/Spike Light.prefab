@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3158624283131014007}
   - component: {fileID: 7828472311373333185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spike Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

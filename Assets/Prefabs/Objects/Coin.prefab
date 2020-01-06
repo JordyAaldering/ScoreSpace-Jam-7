@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2339978591239928447}
   - component: {fileID: -7047858337483420623}
   - component: {fileID: 2339978591239928442}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}

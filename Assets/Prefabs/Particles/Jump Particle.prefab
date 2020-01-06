@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5758676129833507291}
   - component: {fileID: 4994369823861171322}
   - component: {fileID: 2609263238257935307}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Jump Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

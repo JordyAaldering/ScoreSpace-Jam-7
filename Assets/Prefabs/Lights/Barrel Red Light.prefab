@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828777703091105323}
   - component: {fileID: 7526197241173737654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel Red Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

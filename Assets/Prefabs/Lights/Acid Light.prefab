@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7669002235905598281}
   - component: {fileID: 2318960463176042070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Acid Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

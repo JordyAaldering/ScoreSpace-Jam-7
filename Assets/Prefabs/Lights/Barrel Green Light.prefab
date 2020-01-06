@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3362073354738543219}
   - component: {fileID: 421461328708945134}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barrel Green Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

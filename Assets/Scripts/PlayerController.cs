@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnityEvent OnCantSwapGravityEvent = new UnityEvent();
     [SerializeField] private UnityEvent OnCanSwapGravityEvent = new UnityEvent();
 
+    private float startX;
+    
     private bool jumpRequest, canSwapGravity = true;
     private Vector2 playerSize, boxSize;
     private Rigidbody2D rb;
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
         playerSize = GetComponent<BoxCollider2D>().size;
         boxSize = new Vector2(playerSize.x, groundedSkin);
         rb = GetComponent<Rigidbody2D>();
+
+        startX = transform.position.x;
     }
 
     private void Update()
@@ -106,6 +110,12 @@ public class PlayerController : MonoBehaviour
             {
                 wasGrounded = false;
             }
+        }
+
+        if (transform.position.x < startX)
+        {
+            transform.position += new Vector3(Time.fixedDeltaTime, 0f);
+            if (transform.position.x > startX) transform.position = new Vector3(startX, transform.position.y);
         }
     }
 }

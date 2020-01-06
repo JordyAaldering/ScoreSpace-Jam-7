@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5250609568632989145}
   - component: {fileID: 7182333940019956548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Switch Red Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Color: {r: 0.5283019, g: 0.022427902, b: 0.022427902, a: 1}
   m_Intensity: 2.5
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 7d5bc3c351c65ac6f79cbede
+  m_ApplyToSortingLayers: 7d5bc3c351c65ac6
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0

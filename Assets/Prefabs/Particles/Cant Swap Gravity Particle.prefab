@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 698959228599410750}
   - component: {fileID: 222451261108493727}
   - component: {fileID: 7092089477065144878}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cant Swap Gravity Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
