@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -548,8 +548,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 828a582e322a5be4aa8b70a7a081fc49, type: 3}
   - {fileID: 8300000, guid: 91ca94fd01a2d5a4aa61f77a2e3d1137, type: 3}
   PlayMethod: 1
-  MinVolume: 48
-  MaxVolume: 52
+  MinVolume: 0.9
+  MaxVolume: 1
   MinPitch: 0.7
   MaxPitch: 0.9
   SfxAudioMixerGroup: {fileID: 0}
@@ -1907,6 +1907,7 @@ GameObject:
   - component: {fileID: 615688872}
   - component: {fileID: 615688875}
   - component: {fileID: 615688876}
+  - component: {fileID: 615688877}
   m_Layer: 8
   m_Name: Cant Swap Gravity Feedback
   m_TagString: Untagged
@@ -2000,6 +2001,7 @@ MonoBehaviour:
   - {fileID: 615688872}
   - {fileID: 615688875}
   - {fileID: 615688876}
+  - {fileID: 615688877}
   InitializationMode: 0
   DebugActive: 0
 --- !u!114 &615688875
@@ -2054,6 +2056,39 @@ MonoBehaviour:
     DelayBetweenRepeats: 1
   DebugActive: 0
   BoundParticleSystem: {fileID: 7859572556289035835}
+--- !u!114 &615688877
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615688870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2ce51367856bd49b72678cc4263225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Active: 1
+  Label: Sound
+  Timing:
+    InitialDelay: 0
+    CooldownDuration: 0
+    NumberOfRepeats: 0
+    RepeatForever: 0
+    DelayBetweenRepeats: 1
+  DebugActive: 0
+  Sfx: {fileID: 0}
+  RandomSfx:
+  - {fileID: 8300000, guid: d71c108ccf4d4f3418a2a2beee94acc1, type: 3}
+  - {fileID: 8300000, guid: 933966d751cb34e4ea47f2afdaa3ce39, type: 3}
+  - {fileID: 8300000, guid: 8da31ec75b82a1f48b0efc6c1a05bd31, type: 3}
+  - {fileID: 8300000, guid: 4fd72f3fcec378a458a0a9c1261870b5, type: 3}
+  PlayMethod: 1
+  MinVolume: 0.6
+  MaxVolume: 0.7
+  MinPitch: 0.35
+  MaxPitch: 0.45
+  SfxAudioMixerGroup: {fileID: 0}
 --- !u!1 &689957296
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,8 +3692,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 828a582e322a5be4aa8b70a7a081fc49, type: 3}
   - {fileID: 8300000, guid: 91ca94fd01a2d5a4aa61f77a2e3d1137, type: 3}
   PlayMethod: 1
-  MinVolume: 48
-  MaxVolume: 52
+  MinVolume: 0.9
+  MaxVolume: 1
   MinPitch: 1.1
   MaxPitch: 1.3
   SfxAudioMixerGroup: {fileID: 0}
@@ -3971,7 +4006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkSpeed: 4
-  chunkSpeedIncrement: 0.1
+  chunkSpeedIncrement: 0.2
   chunks:
   - {fileID: 968197133}
   - {fileID: 731779511}
