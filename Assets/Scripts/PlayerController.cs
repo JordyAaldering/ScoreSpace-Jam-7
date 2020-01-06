@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 0649
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpVelocity;
     [SerializeField] private float lowJumpMultiplier;
     [SerializeField] private float fallMultiplier;
+    [SerializeField] private float forceFallMultiplier;
 
     [SerializeField] private float groundedSkin = 0.05f;
     [SerializeField] private LayerMask whatIsGround;
@@ -40,8 +42,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && IsGrounded)
-            jumpRequest = true;
+        if (Input.GetButtonDown("Jump") || 
+            Physics2D.gravity.y < 0f && Input.GetKeyDown(KeyCode.W) || 
+            Physics2D.gravity.y > 0f && Input.GetKeyDown(KeyCode.S))
+        {
+            if (IsGrounded)
+                jumpRequest = true;
+        }
 
         if (canSwapGravity && Input.GetButtonDown("Fire1"))
         {
@@ -68,9 +75,19 @@ public class PlayerController : MonoBehaviour
             float velocityY = rb.velocity.y;
             if (Physics2D.gravity.y > 0f) velocityY = -velocityY;
             
-            rb.gravityScale = velocityY < 0f ? fallMultiplier :
-                velocityY > 0f && !Input.GetButton("Jump") ? lowJumpMultiplier : 1f;
-            
+            if (velocityY < 0f)
+            {
+                rb.gravityScale = fallMultiplier;
+                if (Physics2D.gravity.y > 0f && Input.GetKey(KeyCode.W) || Physics2D.gravity.y < 0f && Input.GetKey(KeyCode.S))
+                    rb.gravityScale *= forceFallMultiplier;
+            }
+            else if (Physics2D.gravity.y > 0f && Input.GetKey(KeyCode.W) || Physics2D.gravity.y < 0f && Input.GetKey(KeyCode.S))
+                rb.gravityScale *= forceFallMultiplier;
+            else if (velocityY > 0f && !(Input.GetButton("Jump") || Physics2D.gravity.y < 0f && Input.GetKey(KeyCode.W) || Physics2D.gravity.y > 0f && Input.GetKey(KeyCode.S)))
+                rb.gravityScale = lowJumpMultiplier;
+            else
+                rb.gravityScale = 1f;
+
             if (IsGrounded)
             {
                 if (!wasGrounded)
