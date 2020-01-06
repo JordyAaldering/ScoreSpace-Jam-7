@@ -1,5 +1,4 @@
 ﻿#pragma warning disable 0649
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private UnityEvent OnJumpEvent = new UnityEvent();
     [SerializeField] private UnityEvent OnLandEvent = new UnityEvent();
+    
+    [SerializeField] private UnityEvent OnCantSwapGravityEvent = new UnityEvent();
     [SerializeField] private UnityEvent OnCanSwapGravityEvent = new UnityEvent();
 
     private bool jumpRequest, canSwapGravity = true;
@@ -44,6 +45,9 @@ public class PlayerController : MonoBehaviour
 
         if (canSwapGravity && Input.GetButtonDown("Fire1"))
         {
+            OnCantSwapGravityEvent.Invoke();
+            canSwapGravity = false;
+            
             Physics2D.gravity = -Physics2D.gravity;
             transform.rotation = Quaternion.Euler(0f, 0f, Physics2D.gravity.y < 0f ? 0f : 180f);
         }
@@ -58,7 +62,6 @@ public class PlayerController : MonoBehaviour
             OnJumpEvent.Invoke();
             jumpRequest = false;
             wasGrounded = false;
-            canSwapGravity = false;
         }
         else
         {
@@ -75,8 +78,11 @@ public class PlayerController : MonoBehaviour
                     OnLandEvent.Invoke();
                     wasGrounded = true;
                     
-                    OnCanSwapGravityEvent.Invoke();
-                    canSwapGravity = true;
+                    if (!canSwapGravity)
+                    {
+                        OnCanSwapGravityEvent.Invoke();
+                        canSwapGravity = true;
+                    }
                 }
             }
             else
