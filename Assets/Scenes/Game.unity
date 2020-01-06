@@ -3942,8 +3942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb27564d9aac434d902562adbbff8c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunkSpeed: 4.5
-  chunkSpeedIncrement: 0.14
+  chunkSpeed: 4.2
+  chunkSpeedIncrement: 0.1
   chunks:
   - {fileID: 968197133}
   - {fileID: 731779511}
@@ -4682,7 +4682,7 @@ MonoBehaviour:
   jumpVelocity: 7
   lowJumpMultiplier: 25
   fallMultiplier: 1.5
-  groundedSkin: 0.1
+  groundedSkin: 0.15
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
