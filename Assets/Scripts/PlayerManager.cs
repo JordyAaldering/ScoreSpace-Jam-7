@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         score.value = 0f;
+        if (Physics2D.gravity.y > 0f) Physics2D.gravity = -Physics2D.gravity;
         
         playerTransform = FindObjectOfType<PlayerController>().transform;
         startX = playerTransform.position.x;
@@ -31,10 +32,7 @@ public class PlayerManager : MonoBehaviour
             GameOver();
 
         if (gameOver && Input.GetKeyDown(KeyCode.R))
-        {
-            if (Physics2D.gravity.y > 0f) Physics2D.gravity = -Physics2D.gravity;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
 
         if (!gameOver)
         {
