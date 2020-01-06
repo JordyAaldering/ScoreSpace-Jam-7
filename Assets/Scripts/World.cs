@@ -42,11 +42,12 @@ public class World : MonoBehaviour
     private void Update()
     {
         chunkSpeed += Time.deltaTime * chunkSpeedIncrement;
-        
+
+        Vector3 dist = chunkSpeed * Time.deltaTime * Vector3.left;
         for (int i = 0; i < chunks.Length; i++)
         {
             Chunk chunk = chunks[i];
-            chunk.transform.position += chunkSpeed * Time.deltaTime * Vector3.left;
+            chunk.transform.position += dist;
             
             if (chunks[i].endPoint.position.x < minX)
                 SetChunk(i);
@@ -62,9 +63,6 @@ public class World : MonoBehaviour
 
     private void ResetMinX()
     {
-        if (cam == null)
-            Debug.LogError("No Camera Found");
-
         float halfHeight = cam.orthographicSize;
         minX = -cam.aspect * halfHeight - 1f;
     }
